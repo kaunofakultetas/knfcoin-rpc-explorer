@@ -200,7 +200,7 @@ block endOfBody
 			summary.difficultyData.reverse();
 			summary.difficultyDeltaData.reverse();
 
-			let latestBlockStart = 2016 * (summary.difficultyData.length - 1);
+			let latestBlockStart = !{coinConfig.difficultyAdjustmentBlockCount} * (summary.difficultyData.length - 1);
 
 			for (var i = 0; i < summary.difficultyData.length; i++) {
 				var item = summary.difficultyData[i];
@@ -210,7 +210,7 @@ block endOfBody
 				row.attr("id", null);
 				//row.addClass("fee-rate-table-row");
 
-				var startBlock = latestBlockStart - 2016 * i;
+				var startBlock = latestBlockStart - !{coinConfig.difficultyAdjustmentBlockCount} * i;
 				//var startBlock = 2016 * i;
 
 				row.find(".data-epoch").text(item.epoch);
