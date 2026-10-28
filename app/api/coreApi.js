@@ -453,7 +453,12 @@ global.difficultyByBlockheightCacheDirty = false;
 (function () {
 	const writeDifficultyCache = () => {
 		if (global.difficultyByBlockheightCacheDirty) {
-			difficultyFileCache.writeJson(global.difficultyByBlockheightCache);
+			try {
+				difficultyFileCache.writeJson(global.difficultyByBlockheightCache);
+
+			} catch (e) {
+				utils.logError("8fh3w9eh2r", e);
+			}
 		}
 	};
 
