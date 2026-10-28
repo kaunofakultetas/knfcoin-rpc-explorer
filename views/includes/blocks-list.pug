@@ -62,8 +62,8 @@
 									span.me-2
 										+funItemIcon
 
-							if (block.height % 2016 == 0)
-								span.me-1(title=`This is the first block of difficulty era #${(block.height / 2016).toLocaleString()}`, data-bs-toggle="tooltip")
+							if (block.height % coinConfig.difficultyAdjustmentBlockCount == 0)
+								span.me-1(title=`This is the first block of difficulty era #${(block.height / coinConfig.difficultyAdjustmentBlockCount).toLocaleString()}`, data-bs-toggle="tooltip")
 									i.bi-info-circle
 
 							a(href=`./block-height/${block.height}`) #{block.height.toLocaleString()}
@@ -161,7 +161,7 @@
 									- var currencyValue = parseInt(satValue.dividedBy(coinConfig.baseCurrencyUnit.multiplier));
 									- var currencyValueDecimals = 0;
 
-									if (userSettings.displayCurrency == "btc")
+									if (userSettings.displayCurrency == coinConfig.defaultCurrencyUnit.name.toLowerCase())
 										+valueDisplaySpecial(currencyValue, 0)
 
 									else
@@ -201,7 +201,7 @@
 								- var currencyValue = new Decimal(block.totalFees);
 								- var currencyValueDecimals = 3;
 
-								if (userSettings.displayCurrency == "btc")
+								if (userSettings.displayCurrency == coinConfig.defaultCurrencyUnit.name.toLowerCase())
 									+valueDisplaySpecial(block.totalFees, 4)
 
 								else

@@ -1110,6 +1110,12 @@ expressApp.use(function(req, res, next) {
 	userSettings.uiTimezone = (userSettings.uiTimezone || config.displayDefaults.timezone);
 	userSettings.uiTheme = (userSettings.uiTheme || config.displayDefaults.theme);
 
+	// replace a saved display currency that isn't a unit of the active coin (e.g. "btc" while running KNF)
+	const displayCurrencyType = global.currencyTypes[userSettings.displayCurrency];
+	if (userSettings.displayCurrency != "local" && (!displayCurrencyType || displayCurrencyType.type != "native")) {
+		userSettings.displayCurrency = config.displayDefaults.displayCurrency;
+	}
+
 
 	// make available in templates
 	res.locals.displayCurrency = userSettings.displayCurrency;

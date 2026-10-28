@@ -38,18 +38,23 @@ module.exports = {
 	name:"KNF Coin",
 	ticker:"KNF",
 	logoUrlsByNetwork:{
-		"main":"./img/network-mainnet/logo.svg",
-		"test":"./img/network-testnet/logo.svg",
-		"regtest":"./img/network-regtest/logo.svg"
+		"main":"./img/knf/logo.svg",
+		"test":"./img/knf/logo.svg",
+		"regtest":"./img/knf/logo.svg"
 	},
 	coinIconUrlsByNetwork:{
-		"main":"./img/network-mainnet/coin-icon.svg",
-		"test":"./img/network-testnet/coin-icon.svg",
-		"regtest":"./img/network-regtest/coin-icon.svg"
+		"main":"./img/knf/logo.svg",
+		"test":"./img/knf/logo.svg",
+		"regtest":"./img/knf/logo.svg"
+	},
+	faviconDirsByNetwork:{
+		"main":"./img/knf",
+		"test":"./img/knf",
+		"regtest":"./img/knf"
 	},
 	coinColorsByNetwork: {
-		"main": "#1daf00",
-		"test": "#1daf00",
+		"main": "#78003F",
+		"test": "#78003F",
 		"regtest": "#777"
 	},
 	siteTitlesByNetwork: {
@@ -71,7 +76,7 @@ module.exports = {
 	maxBlockSize: 1000000,
 	minTxBytes: 166,
 	minTxWeight: 166 * 4,
-	difficultyAdjustmentBlockCount: 72, // (3 hours * 60 min) / 2.5 min per block = 72 blocks for mainnet
+	difficultyAdjustmentBlockCount: 216, // (9 hours * 60 min) / 2.5 min per block = 216 blocks (nPowTargetTimespan was raised from 3 hours in the "Raise retarget period" hard fork)
 	maxSupplyByNetwork: {
 		"main": new Decimal(84000000),
 		"test": new Decimal(84000000),

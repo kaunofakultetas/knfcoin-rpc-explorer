@@ -1,11 +1,18 @@
+const coins = require("./coins.js");
+const config = require("./config.js");
+
+// the main native unit comes from the active coin (e.g. "btc" -> BTC, "knf" -> KNF)
+const defaultCurrencyUnit = coins[config.coin].defaultCurrencyUnit;
+const defaultCurrencyId = defaultCurrencyUnit.name.toLowerCase();
+
 global.currencyTypes = {
-	"btc": {
-		id: "btc",
+	[defaultCurrencyId]: {
+		id: defaultCurrencyId,
 		type:"native",
-		name:"BTC",
-		multiplier:1,
+		name:defaultCurrencyUnit.name,
+		multiplier:defaultCurrencyUnit.multiplier,
 		default:true,
-		decimalPlaces:8
+		decimalPlaces:defaultCurrencyUnit.decimalPlaces
 	},
 	"sat": {
 		id: "sat",

@@ -96,7 +96,7 @@ module.exports = {
 	coin: currentCoin,
 
 	displayDefaults: {
-		displayCurrency: (process.env.BTCEXP_DISPLAY_CURRENCY || "btc"),
+		displayCurrency: (process.env.BTCEXP_DISPLAY_CURRENCY || coins[currentCoin].defaultCurrencyUnit.name.toLowerCase()),
 		localCurrency: (process.env.BTCEXP_LOCAL_CURRENCY || "usd"),
 		theme: (process.env.BTCEXP_UI_THEME || "dark"),
 		timezone: (process.env.BTCEXP_UI_TIMEZONE || "local")

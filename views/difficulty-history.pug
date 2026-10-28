@@ -107,7 +107,8 @@ block endOfBody
 	script.
 		var blockCount = !{blockCount};
 		var yearItems = !{JSON.stringify(yearItems)};
-		
+		var epochsPerYear = !{365.25 * 24 * 60 * 60 / (coinConfig.difficultyAdjustmentBlockCount * coinConfig.targetBlockTimeSeconds)};
+
 		var heights = [];
 		var height = 0;
 		var chunkSize = 10;
@@ -406,7 +407,7 @@ block endOfBody
 
 				summary.graphData.push({x:i, y:raw[heightStr].difficulty});
 
-				var yearIndex = Math.floor((raw.heights.length - i) / 26);
+				var yearIndex = Math.floor((raw.heights.length - i) / epochsPerYear);
 
 				for (let j = 0; j < yearItems.length; j++) {
 					if (yearIndex < yearItems[j][1]) {
